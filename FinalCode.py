@@ -79,7 +79,7 @@ def clean_then_plot_heatmap(df):
     df_base_disaggr = pd.DataFrame(df_base.base.str.split(',').tolist(), index=df_base.year).stack()
     df_base_disaggr = df_base_disaggr.reset_index()[[0, 'year']] # var1 variable is currently labeled 0
     df_base_disaggr.columns = ['base', 'year'] # renaming var1
-    df_base_disaggr['base'] = df_base_disaggr['base'].apply(remove_spaces)
+    df_base_disaggr['base'] = df_base_disaggr['base'].apply(remove_spaces) # for .apply don't have to pass in a parameter; it knows to check row by row
     # return df_base_disaggr.head()
     count_countries(df_base_disaggr)
 
@@ -87,6 +87,7 @@ def remove_spaces(row):
     '''
     A function to remove remaining weird spaces in country names:
     Remove spaces from column of type string
+    row: don't have to pass in parameter here, because .apply automatically knows to check data row by row
     '''
     country = row.split()
     cleaned_lst = []
