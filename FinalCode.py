@@ -210,7 +210,7 @@ def sum_mult_vars(df_list, groupby, to_sum_list):
             sum_list.append(grouped)
     return sum_list
 
-def multi_line_plot(df_sum_list, legend_list, title, xlab, ylab, save_bool, plot_bool, save_as, legend_title, xrestrict_lower=0, xrestrict_upper=0, yrestrict_upper=0):
+def multi_line_plot(df_sum_list, legend_list, title, xlab, ylab, save_bool, plot_bool, save_as, legend_title, xrestrict_lower=0, xrestrict_upper=0, yrestrict_upper=0):  ### May need to add save_as = 0 , plot_bool = 0 to make sure you dont get an error
     '''
     This function will create a set of line graphs in a single space.
     df_sum_list: list of dfs that have been grouped and summed on some variable in function sum_var
@@ -255,7 +255,7 @@ if __name__ == '__main__':
     # print(prov_over_time(1,1))
     # print(make_pie(1,0))
     # print(make_world(1,0))
-    # print(clean_then_plot_heatmap(df))
+    print(clean_then_plot_heatmap(df))
     # print(US_groups(df))
 
     '''Plotting three line graphs in one space'''
@@ -272,7 +272,7 @@ if __name__ == '__main__':
 
     '''Plot with Society'''
     make_sums_mult_vars = sum_mult_vars(make_separate_dfs, 'year', prov_list)
-    print(multi_line_plot(make_sums_mult_vars, prov_list, 'Ku Klux Klan Provisions Over Time', 'Year', 'Provision Count', 1, 0, 'KKK_prov_type_over_time', 'Provision Type', 0, 0, yrestrict_upper=25000))
+    # print(multi_line_plot(make_sums_mult_vars, prov_list, 'Ku Klux Klan Provisions Over Time', 'Year', 'Provision Count', 1, 0, 'KKK_prov_type_over_time', 'Provision Type', 0, 0, yrestrict_upper=25000))
 
     '''Plot without Society'''
     make_sums_mult_vars_no_soc = sum_mult_vars(make_separate_dfs, 'year', prov_list_no_soc)

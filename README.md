@@ -57,28 +57,54 @@ I also explored data on the country that is the base for each non-state actor wi
 To do this, one uses the GeoPandas built-in 'world' dataset, which contains country names, geometric shapes of those countries, and spatial location of those shapes on the world map. See Table 1 for the first five rows of the built-in dataset.
 
 #### Table 1
-![world.head()](world_head.jpg)
+![world.head](world_head.jpg)
 
 Using this dataset, GeoPandas builds a template that can then apply to their own data (see Figure 4 for template).
 
 #### Figure 4
-![Base map](World.png).
-
+![World](World.png)
 To work with this template, one merges their own pandas dataframe into the built-in dataset, matching on a common variable. In my case, I matched on country name and merged a column of data containing the count of the total number of times non-state actors provided services (i.e., aggregated across year). See Figure 5 for the resulting heatmap, which is theh prevalence of non-state actors' services over the past 45 years.
 
 #### Figure 5
-![HEAT MAP](Heatmap.png)
-
+![heatmap](Heatmap.png)
 I noticed a lot of "heat" in the U.S., so I explored the prevalence of groups in the U.S. and their provision rate. Table 2 displays a count of U.S. non-state actors over time; here, n = 45 indicates a group has provided services for each year in the dataset (i.e., 45 years).
 
 
 #### Table 2
-![UG_group_list](UG_group_list.jpg)
+<!-- ![UG_group_list](UG_group_list.jpg) -->
+
+| Groups in the United States                     | N Years |
+|-------------------------------------------------|---------|
+| Jewish Defense League (JDL)                     | 45      |
+| Jewish Defense League (JDL)                     | 44      |
+| Ku Klux Klan (KKK)                              | 44      |
+|  Omega-7                                        | 37      |
+| El Rukn                                         | 36      |
+| Army of God                                     | 35      |
+| Order II                                        | 33      |
+| Aryan Nations (AN)                              | 31      |
+| Armed Forces of National Liberation             | 24      |
+| Hammerskin Nation                               | 21      |
+| al-Fuqra                                        | 21      |
+| Covenant Sword and Arm of the Lord (CSA)        | 20      |
+| Islamic Salvation Front                         | 14      |
+| Croatian Freedom Fighters (CFF)                 | 13      |
+| Nation of Yahweh                                | 13      |
+| Cambodian Freedom Fighters (CFF)                | 13      |
+| Yemen Islamic Jihad                             | 10      |
+| Justice Commandos for the Armenian Genocide     | 9       |
+| Armenian Revolutionary Army                     | 9       |
+| Hector Riobe Brigade                            | 2       |
+| Black Revolutionary Assault Team                | 1       |
+| Independent Armed Revolutionary Movement (MIRA) | 1       |    
+
+
+
 
 I explored the top three U.S. groups (by occurance rate over time):
 * KKK
 * Jewish Defense League
-* Black Panthers.
+* Black Panthers
 
 Figure 6 shows a count of the number of articles in which groups were mentioned over time.
 
