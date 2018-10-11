@@ -12,12 +12,12 @@ def prev_over_time(save_bool, plot_bool):
     plot_bool: 1 == display the plot, 0 == don't display it
     '''
     df_year_count = df.groupby('year').count()['name']
-    df_year_count.plot()
-    plt.title('Prevalence of Organizations Over Time')
-    plt.xlabel('Year')
-    plt.ylabel('Group Count')
+    df_year_count.plot(kind='area', color='m', alpha=0.25, linewidth=3.0)
+    plt.title('Prevalence of Organizations Over Time', weight='bold', size=14)
+    plt.xlabel('Year', weight='bold')
+    plt.ylabel('Group Count', weight='bold')
     if save_bool == 1:
-        plt.savefig('Prev_over_time')
+        plt.savefig('Pervasiveness_over_time')
     if plot_bool == 1:
         plt.show()
 
@@ -28,10 +28,11 @@ def prov_over_time(save_bool, plot_bool):
     plot_bool: 1 == display the plot, 0 == don't display it
     '''
     df_year_count_prov = df.groupby('year').sum()['total']
-    df_year_count_prov.plot()
-    plt.title('Total Provisions Over Time')
-    plt.xlabel('Year')
-    plt.ylabel('Provision Count')
+    df_year_count_prov.plot(kind='area', color='g', alpha=0.25, linewidth=3.0)
+    plt.title('Total Provisions Over Time', weight='bold', size=14)
+    plt.xlabel('Year', weight='bold')
+    plt.ylabel('Provision Count', weight='bold')
+    plt.tight_layout()
     if save_bool == 1:
         plt.savefig('Provisions_over_time')
     if plot_bool == 1:
@@ -50,7 +51,7 @@ def make_pie(save_bool, plot_bool):
     pie = plt.pie(df_prov_pie, startangle=0, autopct='%1.0f%%')
     labels = ['religion','infrastructure', 'health', 'education', 'finance', 'security', 'society']
     plt.legend(pie[0], labels, bbox_to_anchor=(1,0.5), loc='center right', fontsize=10,
-    bbox_transform=plt.gcf().transFigure)
+    bbox_transform=plt.gcf().transFigure, title='Provision Type')
     plt.subplots_adjust(left=0.0, bottom=0.1, right=0.8)
     plt.ylabel('')
     if save_bool == 1:
@@ -160,6 +161,11 @@ def plot_heatmap(df):
      figsize=(20,20), scheme='quantiles')
     plt.savefig('Heatmap')
 
+def US_groups(df):
+    '''list of all organizations in the U.S.'''
+    df_US = df[df['base'].str.contains("United States")]
+    df_US['name'].value_counts().to_csv('US_group_list.csv')
+
 def sep_dfs(df, group_list, base_str='United States'):
     '''
     This function will take in an original dataframe, and create separate dataframes for all groups in group_list
@@ -203,7 +209,7 @@ def sum_mult_vars(df_list, groupby, to_sum_list):
             sum_list.append(grouped)
     return sum_list
 
-def multi_line_plot(df_sum_list, legend_list, title, xlab, ylab, save_bool, plot_bool, save_as, restrict_lower=0, restrict_upper=0):
+def multi_line_plot(df_sum_list, legend_list, title, xlab, ylab, save_bool, plot_bool, save_as, legend_title, xrestrict_lower=0, xrestrict_upper=0, yrestrict_upper=0):
     '''
     This function will create a set of line graphs in a single space.
     df_sum_list: list of dfs that have been grouped and summed on some variable in function sum_var
@@ -215,14 +221,19 @@ def multi_line_plot(df_sum_list, legend_list, title, xlab, ylab, save_bool, plot
     plot_bool: 1 == display the plot, 0 == don't display it
     '''
     for df, item in zip(df_sum_list, legend_list):
-        line = df.plot(label=item)
+        line = df.plot(kind = 'area', label=item, alpha=0.25, linewidth=2.0)
         line.set_label(item)
-    plt.legend()
-    plt.title(title)
-    if restrict_lower > 0 and restrict_upper > 0:
-        plt.xlim(restrict_lower, restrict_upper)
-    plt.xlabel(xlab)
-    plt.ylabel(ylab)
+    plt.legend(title=legend_title, loc='upper left')
+    plt.title(title, weight='bold')
+    if xrestrict_lower > 0 & xrestrict_upper > 0:
+        plt.xlim(xrestrict_lower, xrestrict_upper)
+    if yrestrict_upper > 0:
+        plt.ylim(0, yrestrict_upper)
+    # if save_as == 'Ku Klux Klan Provisions Over Time':
+    # if ylim == 1:
+    #     plt.ylim(0,20000)
+    plt.xlabel(xlab, weight='bold')
+    plt.ylabel(ylab, weight='bold')
     if save_bool == 1:
         plt.savefig(save_as)
     if plot_bool == 1:
@@ -234,26 +245,23 @@ def merge_dfs(list_of_dfs):
         merged = merged.append(df, ignore_index=True)
     return merged
 
-def US_groups(df):
-    '''list of all organizations in the U.S.'''
-    df_US = df[df['base'].str.contains("United States")]
-    df_US['name'].value_counts().to_csv('US_group_list.csv')
+
 
 if __name__ == '__main__':
     #install ConvertToUTF8 package in ATOM for editing and saving files in order to open
     df = pd.read_csv("data/TIOS_data_v2.csv")
-    # print(prev_over_time(0,1))
-    # print(prov_over_time(0,1))
+    # print(prev_over_time(1,0))
+    # print(prov_over_time(1,1))
     # print(make_pie(1,0))
     # print(make_world(1,0))
     # print(clean_then_plot_heatmap(df))
     # print(US_groups(df))
 
     '''Plotting three line graphs in one space'''
-    top3list = ['KKK', 'JDL', 'Black Pan']
+    top3list = ['Ku Klux Klan', 'Jewish Defense League', 'Black Panthers']
     make_separate_dfs = sep_dfs(df, top3list)
     make_sums_one_var = sum_one_var(make_separate_dfs, 'year', 'artcount')
-    # print(multi_line_plot(make_sums_one_var, top3list, 'Article Appearances Over Time, By U.S. Group', 'Year', 'Article Count', 1, 0, 'Art_count_over_time'))
+    # print(multi_line_plot(make_sums_one_var, top3list, 'Article Appearances Over Time, By U.S. Group', 'Year', 'Article Count', 1, 0, 'USgroup_art_count_over_time', 'U.S. Group'))
 
     '''Plot provisions for a single group over time and by type'''
     group_list = ['KKK']
@@ -263,9 +271,9 @@ if __name__ == '__main__':
 
     '''Plot with Society'''
     make_sums_mult_vars = sum_mult_vars(make_separate_dfs, 'year', prov_list)
-    # print(multi_line_plot(make_sums_mult_vars, prov_list, 'Provisions Over Time, for KKK', 'Year', 'Provision Count', 1, 0, 'KKK_prov_type_over_time'))
+    print(multi_line_plot(make_sums_mult_vars, prov_list, 'Ku Klux Klan Provisions Over Time', 'Year', 'Provision Count', 1, 0, 'KKK_prov_type_over_time', 'Provision Type', 0, 0, yrestrict_upper=25000))
 
     '''Plot without Society'''
     make_sums_mult_vars_no_soc = sum_mult_vars(make_separate_dfs, 'year', prov_list_no_soc)
-    # print(multi_line_plot(make_sums_mult_vars_no_soc, prov_list_no_soc, 'Provisions Over Time, for KKK', 'Year', 'Provision Count', 1, 0, 'KKK_prov_type_over_time_no_soc'))
-    # print(multi_line_plot(make_sums_mult_vars_no_soc, prov_list_no_soc, 'Provisions During the 1990s, for KKK', 'Year', 'Provision Count', 1, 0, 'KKK_prov_type_over_time_no_soc_90s', 1990, 1999))
+    # print(multi_line_plot(make_sums_mult_vars_no_soc, prov_list_no_soc, 'Ku Klux Klan Provisions Over Time (without Social)', 'Year', 'Provision Count', 1, 0, 'KKK_prov_type_over_time_no_soc', 'Provision Type'))
+    # print(multi_line_plot(make_sums_mult_vars_no_soc, prov_list_no_soc, 'Ku Klux Klan Provisions During the 1990s (without Social)', 'Year', 'Provision Count', 1, 0, 'KKK_prov_type_over_time_no_soc_90s', 'Provision Type', 1990, 1999, 0, 0))
