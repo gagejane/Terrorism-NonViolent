@@ -57,16 +57,24 @@ I also explored data on the country that is the base for each non-state actor wi
 To do this, one uses the GeoPandas built-in 'world' dataset, which contains country names, geometric shapes of those countries, and spatial location of those shapes on the world map. See Table 1 for the first five rows of the built-in dataset.
 
 #### Table 1
-![world.head](world_head.jpg)
 
+| pop_est  | continent     | name                 | iso_a3 | gdp_md_est | geometry                                                     |
+|----------|---------------|----------------------|--------|------------|--------------------------------------------------------------|
+| 28400000 | Asia          | Afghanistan          | AFG    | 22270      | POLYGON ((61.21081709172574 35.65007233330923,...))          |
+| 12799293 | Africa        | Angola               | AGO    | 110300     | MULTIPOLYGON (((16.32652835456705 -5.877470391466218,...)))  |
+| 3639453  | Europe        | Albania              | ALB    | 21810      | POLYGON ((20.59024743010491 41.85540416113361,...))          |
+| 4798491  | Asia          | United Arab Emirates | ARE    | 184300     | POLYGON ((51.57951867046327 24.24549713795111,...))          |
+| 40913584 | South America | Argentina            | ARG    | 573900     | MULTIPOLYGON (((-65.50000000000003 -55.19999999999996,...))) |
 Using this dataset, GeoPandas builds a template that can then apply to their own data (see Figure 4 for template).
 
 #### Figure 4
 ![World](World.png)
+
 To work with this template, one merges their own pandas dataframe into the built-in dataset, matching on a common variable. In my case, I matched on country name and merged a column of data containing the count of the total number of times non-state actors provided services (i.e., aggregated across year). See Figure 5 for the resulting heatmap, which is theh prevalence of non-state actors' services over the past 45 years.
 
 #### Figure 5
 ![heatmap](Heatmap.png)
+
 I noticed a lot of "heat" in the U.S., so I explored the prevalence of groups in the U.S. and their provision rate. Table 2 displays a count of U.S. non-state actors over time; here, n = 45 indicates a group has provided services for each year in the dataset (i.e., 45 years).
 
 
@@ -76,9 +84,9 @@ I noticed a lot of "heat" in the U.S., so I explored the prevalence of groups in
 | Groups in the United States                     | N Years |
 |-------------------------------------------------|---------|
 | Jewish Defense League (JDL)                     | 45      |
-| Jewish Defense League (JDL)                     | 44      |
 | Ku Klux Klan (KKK)                              | 44      |
-|  Omega-7                                        | 37      |
+| BLack Panthers                                  | 44      |
+| Omega-7                                         | 37      |
 | El Rukn                                         | 36      |
 | Army of God                                     | 35      |
 | Order II                                        | 33      |
@@ -97,8 +105,6 @@ I noticed a lot of "heat" in the U.S., so I explored the prevalence of groups in
 | Hector Riobe Brigade                            | 2       |
 | Black Revolutionary Assault Team                | 1       |
 | Independent Armed Revolutionary Movement (MIRA) | 1       |    
-
-
 
 
 I explored the top three U.S. groups (by occurance rate over time):
@@ -126,9 +132,21 @@ I noticed a spike in religious provisions for the KKK in the 90s, so I zoomed in
 #### Figure 9
 ![KKK in the 90s](KKK_prov_type_over_time_no_soc_90s.png)
 
+What's going on around 1996?
++ 1996: Election year; reelecting a liberal president?
++ 1995: O.J. Simpson trial
++ 1995: Million Man March; conceived by Nation of Islam leader Louis Farrakhan
+
+
+
 ## Future Directions
-These data are cool, but they would be cooler if I could use them to predict stuff.
-Describe the datasets that can be merged with this dataset. Outline some potential research questions.
+These data are interesting, but they would be even more compelling if I could use them to make predictive models. To that end, I plan to merge these data with another dataset(s) so that provision prevalence and type could be treated as predictors. This type of analysis could address questions like: _Do provisions increase group membership? Do provisions increase public favor/perceptions of legitimacy? If so, which provisions are most influential?_
+
+Another interesting element of this project focuses on domestic forms of terrorism. To continue this line of inquiry, I plan to work with the Global Terrorism Database (GTD), which is an open-source database including information on terrorist events around the world from 1970 through 2017. The GTD has the following characteristics:
++ Contains information on over 180,000 terrorist attacks, from 1970-2017
++ More than 4,000,000 news articles and 25,000 news sources were reviewed to collect incident data from 1998 to 2017 alone
++ Includes information on at least 45 variables for each case, with more recent incidents including information on more than 120 variables
+  + Target Type, Perpetrator, Attack Type, Weapon Type
 
 #### References
 Cronin, A. K. (2011) How Terrorism Ends: Understanding the Decline and Demise of Terrorist Campaigns. Princeton, NJ: Princeton University Press.

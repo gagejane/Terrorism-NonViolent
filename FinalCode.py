@@ -149,8 +149,9 @@ def final_clean(df):
     world = gpd.read_file(gpd.datasets.get_path('naturalearth_lowres'))
     # print(world.info())
     country_names = world[['name', 'continent', 'geometry', 'iso_a3']]
-    world_merged = country_names.merge(df, on='name')
-    # print(world_merged.describe())
+    world_merged = country_names.merge(df, how='left', on='name')
+    world_merged.fillna(value=0,inplace=True)
+    # print(world_merged['count'])
     plot_heatmap(world_merged)
 
 def plot_heatmap(df):
