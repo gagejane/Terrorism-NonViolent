@@ -1,5 +1,5 @@
-<center><font size=6><b> Exploring Data on 45 years of Service Provisions Among Non-state Actors
-<center><font size=6> Jane Stout
+# **Exploring Data on 45 years of Service Provisions Among Non-state Actors**
+# Jane Stout
 
 
 ## Background
@@ -65,12 +65,13 @@ To do this, one uses the GeoPandas built-in 'world' dataset, which contains coun
 | 3639453  | Europe        | Albania              | ALB    | 21810      | POLYGON ((20.59024743010491 41.85540416113361,...))          |
 | 4798491  | Asia          | United Arab Emirates | ARE    | 184300     | POLYGON ((51.57951867046327 24.24549713795111,...))          |
 | 40913584 | South America | Argentina            | ARG    | 573900     | MULTIPOLYGON (((-65.50000000000003 -55.19999999999996,...))) |
+
 Using this dataset, GeoPandas builds a template that can then apply to their own data (see Figure 4 for template).
 
 #### Figure 4
 ![World](World.png)
 
-To work with this template, one merges their own pandas dataframe into the built-in dataset, matching on a common variable. In my case, I matched on country name and merged a column of data containing the count of the total number of times non-state actors provided services (i.e., aggregated across year). See Figure 5 for the resulting heatmap, which is theh prevalence of non-state actors' services over the past 45 years.
+To work with this template, one merges their own pandas dataframe into the built-in dataset, matching on a common variable. In my case, I matched on country name and merged a column of data containing the count of the total number of times non-state actors provided services (i.e., aggregated across year). See Figure 5 for the resulting heatmap, which is the prevalence of non-state actors' services over the past 45 years.
 
 #### Figure 5
 ![heatmap](Heatmap.png)
@@ -85,7 +86,7 @@ I noticed a lot of "heat" in the U.S., so I explored the prevalence of groups in
 |-------------------------------------------------|---------|
 | Jewish Defense League (JDL)                     | 45      |
 | Ku Klux Klan (KKK)                              | 44      |
-| BLack Panthers                                  | 44      |
+| Black Panthers                                  | 44      |
 | Omega-7                                         | 37      |
 | El Rukn                                         | 36      |
 | Army of God                                     | 35      |
@@ -133,7 +134,7 @@ I noticed a spike in religious provisions for the KKK in the 90s, so I zoomed in
 ![KKK in the 90s](KKK_prov_type_over_time_no_soc_90s.png)
 
 What's going on around 1996?
-+ 1996: Election year; reelecting a liberal president?
++ 1996: Election year
 + 1995: O.J. Simpson trial
 + 1995: Million Man March; conceived by Nation of Islam leader Louis Farrakhan
 
