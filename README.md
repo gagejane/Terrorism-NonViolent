@@ -1,5 +1,5 @@
 # **Exploring Data on 45 years of Service Provisions Among Non-state Actors**
-# Jane Stout
+# Jane Stout, Ph.D.
 
 
 ## Background
