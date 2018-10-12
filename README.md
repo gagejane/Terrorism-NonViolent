@@ -38,25 +38,25 @@ Exploration consisted of a few key factors:
 ## Data Visualization
 I created an area graph of group prevalence over time. This graph represents a count of unique organization names in the dataset for each year (see Figure 1).
 
-#### Figure 1
+#### **Figure 1**
 ![Pervasiveness_over_time](Pervasiveness_over_time.png)
 
 I also created an area graph of provisions rendered over time; this is a count of the total number of provisions documented in the dataset for each year (see Figure 2).
 
-#### Figure 2
+#### **Figure 2**
 ![Provisions over time](/Provisions_over_time.png)
 
 <!-- + A plot of these on the same graph reveals they their range is very different (prev max is 250, prov max is 2000000 [mil], see Provision_Type_over_time). Because social provisions were on much larger range than the rest of the provisions, I created a line graph of provisions by type over time, omitting social provisions. This graph represents a count of the number of specific provisions in the dataset for each year, omitting social provisions. (see Provision_Type_over_time_noSoc) -->
 Next, I created a pie graph of the count of each type of provision in the dataset, collapsed across year. As seen in Figure 3, social provisions are by far the most popular provisions.
 
-#### Figure 3
+#### **Figure 3**
 ![Pie provisions](Pie_prov.png)
 
 I also explored data on the country that is the base for each non-state actor with the goal of producing a heat-map. I used GeoPandas to create a heatmap of the number of times non-state actors provided services, across time.
 
 To do this, one uses the GeoPandas built-in 'world' dataset, which contains country names, geometric shapes of those countries, and spatial location of those shapes on the world map. See Table 1 for the first five rows of the built-in dataset.
 
-#### Table 1
+#### **Table 1**
 
 | pop_est  | continent     | name                 | iso_a3 | gdp_md_est | geometry                                                     |
 |----------|---------------|----------------------|--------|------------|--------------------------------------------------------------|
@@ -68,18 +68,18 @@ To do this, one uses the GeoPandas built-in 'world' dataset, which contains coun
 
 Using this dataset, GeoPandas builds a template that can then apply to their own data (see Figure 4 for template).
 
-#### Figure 4
+#### **Figure 4**
 ![World](World.png)
 
 To work with this template, one merges their own pandas dataframe into the built-in dataset, matching on a common variable. In my case, I matched on country name and merged a column of data containing the count of the total number of times non-state actors provided services (i.e., aggregated across year). See Figure 5 for the resulting heatmap, which is the prevalence of non-state actors' services over the past 45 years.
 
-#### Figure 5
+#### **Figure 5**
 ![heatmap](Heatmap.png)
 
 I noticed a lot of "heat" in the U.S., so I explored the prevalence of groups in the U.S. and their provision rate. Table 2 displays a count of U.S. non-state actors over time; here, n = 45 indicates a group has provided services for each year in the dataset (i.e., 45 years).
 
 
-#### Table 2
+#### **Table 2**
 <!-- ![UG_group_list](UG_group_list.jpg) -->
 
 | Groups in the United States                     | N Years |
@@ -115,22 +115,22 @@ I explored the top three U.S. groups (by occurance rate over time):
 
 Figure 6 shows a count of the number of articles in which groups were mentioned over time.
 
-#### Figure 6
+#### **Figure 6**
 ![US article count over time](USgroup_art_count_over_time.png)
 
 Given that the KKK is the most prevalent group in the U.S., I explored their provision rate by type, and over time. I saw social provisions were by far the most prevalent for each group (see Figure 7).
 
-#### Figure 7
+#### **Figure 7**
 ![Provision_Type_over_time_KKK](KKK_prov_type_over_time.png)
 
 So, I re-plotted the figure, omitting social provisions (see Figure 8).
 
-#### Figure 8
+#### **Figure 8**
 ![Provision_Type_over_time_KKK_noSoc](KKK_prov_type_over_time_no_soc.png)
 
 I noticed a spike in religious provisions for the KKK in the 90s, so I zoomed in on that (see Figure 9).
 
-#### Figure 9
+#### **Figure 9**
 ![KKK in the 90s](KKK_prov_type_over_time_no_soc_90s.png)
 
 What's going on around 1996?
