@@ -102,9 +102,7 @@ def count_countries(df):
     Counting the number of country instances, across years
     df: original pandas df
     '''
-    # print('Doing it')
     df_base_count = df['year'].groupby(df['base']).count()
-    # print(df_base_count.head())
     df_base_count = df_base_count.reset_index()
     df_base_count.rename(columns ={'year':'count'}, inplace = True)
     df_base_count.rename(columns ={'base':'name'}, inplace = True)
@@ -227,13 +225,10 @@ def multi_line_plot(df_sum_list, legend_list, title, xlab, ylab, save_bool, plot
         line.set_label(item)
     plt.legend(title=legend_title, loc='upper left')
     plt.title(title, weight='bold')
-    if xrestrict_lower > 0 & xrestrict_upper > 0:
+    if xrestrict_upper > 0:
         plt.xlim(xrestrict_lower, xrestrict_upper)
     if yrestrict_upper > 0:
         plt.ylim(0, yrestrict_upper)
-    # if save_as == 'Ku Klux Klan Provisions Over Time':
-    # if ylim == 1:
-    #     plt.ylim(0,20000)
     plt.xlabel(xlab, weight='bold')
     plt.ylabel(ylab, weight='bold')
     if save_bool == 1:
@@ -256,7 +251,7 @@ if __name__ == '__main__':
     # print(prov_over_time(1,1))
     # print(make_pie(1,0))
     # print(make_world(1,0))
-    print(clean_then_plot_heatmap(df))
+    # print(clean_then_plot_heatmap(df))
     # print(US_groups(df))
 
     '''Plotting three line graphs in one space'''
@@ -277,5 +272,6 @@ if __name__ == '__main__':
 
     '''Plot without Society'''
     make_sums_mult_vars_no_soc = sum_mult_vars(make_separate_dfs, 'year', prov_list_no_soc)
-    # print(multi_line_plot(make_sums_mult_vars_no_soc, prov_list_no_soc, 'Ku Klux Klan Provisions Over Time (without Social)', 'Year', 'Provision Count', 1, 0, 'KKK_prov_type_over_time_no_soc', 'Provision Type'))
-    # print(multi_line_plot(make_sums_mult_vars_no_soc, prov_list_no_soc, 'Ku Klux Klan Provisions During the 1990s (without Social)', 'Year', 'Provision Count', 1, 0, 'KKK_prov_type_over_time_no_soc_90s', 'Provision Type', 1990, 1999, 0, 0))
+    # print(multi_line_plot(make_sums_mult_vars_no_soc, prov_list_no_soc, 'Ku Klux Klan Provisions Over Time (without Society)', 'Year', 'Provision Count', 1, 0, 'KKK_prov_type_over_time_no_soc', 'Provision Type'))
+    print(multi_line_plot(make_sums_mult_vars_no_soc, prov_list_no_soc, 'Ku Klux Klan Provisions During the 1990s (without Society)', 'Year', 'Provision Count', 1, 0, 'KKK_prov_type_over_time_no_soc_90s', 'Provision Type', xrestrict_lower=1990, xrestrict_upper=1999, yrestrict_upper=0))
+    # def multi_line_plot(df_sum_list, legend_list, title, xlab, ylab, save_bool, plot_bool, save_as, legend_title, xrestrict_lower=0, xrestrict_upper=0, yrestrict_upper=0):  ### May need to add save_as = 0 , plot_bool = 0 to make sure you dont get an error
