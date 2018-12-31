@@ -4,7 +4,7 @@
 
 ## Background
 
-![OEF](OEF.jpg) ![OEFR](OEFR.jpg)
+![OEF](images/OEF.jpg) ![OEFR](images/OEFR.jpg)
 
 
 One Earth Future(OEF) is a non-profit in Broomfield, CO, whose mission is to foster sustainable peace by building effective networks and resilient societies in fragile and post-conflict environments around the world. OEF has a research department (OEF Research) aiming to produce actionable, empirical research that speaks to how a world without war can be achieved. One line of research at OEF focuses on the role of terrorist and insurgent groups (heretofore referred to as “non-state actors") in times of conflict. In particular, OEF studies non-state actors’ use of social services during times of conflict. According to OEF researchers, non-violent activities of violent groups are correlated with many important outcomes and enhance our understanding of the internal functions of terrorist organizations. For instance, some violent groups seek legitimacy and international support through service provision (see Heger & Jung, 2017).
@@ -47,7 +47,7 @@ I first created an area graph of group prevalence over time. Figure 1 represents
 
 I also created an area graph of provisions rendered over time. Figure 2 provides a count of the total number of provisions documented in the dataset for each year.
 
-![Provisions over time](/Provisions_over_time.png)
+![Provisions over time](/Users/janestout/Dropbox/Galvanize/DSI/Capstones/FinalWork/Provisions_over_time.png)
 
 **Figure 2. The number of provisions in the dataset, over time.**
 
