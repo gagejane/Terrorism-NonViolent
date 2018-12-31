@@ -41,13 +41,13 @@ Exploration consisted of a few key factors:
 ## Data Visualization
 I first created an area graph of group prevalence over time. Figure 1 represents a count of unique organization names in the dataset for each year.
 
-![Pervasiveness_over_time](Pervasiveness_over_time.png)
+![Pervasiveness_over_time](images/Pervasiveness_over_time.png)
 
 **Figure 1. The number of unique organization names in the dataset, over time.**
 
 I also created an area graph of provisions rendered over time. Figure 2 provides a count of the total number of provisions documented in the dataset for each year.
 
-![Provisions over time](/Users/janestout/Dropbox/Galvanize/DSI/Capstones/FinalWork/Provisions_over_time.png)
+![Provisions over time](images/Provisions_over_time.png)
 
 **Figure 2. The number of provisions in the dataset, over time.**
 
@@ -55,7 +55,7 @@ I also created an area graph of provisions rendered over time. Figure 2 provides
 <!-- + A plot of these on the same graph reveals they their range is very different (prev max is 250, prov max is 2000000 [mil], see Provision_Type_over_time). Because social provisions were on much larger range than the rest of the provisions, I created a line graph of provisions by type over time, omitting social provisions. This graph represents a count of the number of specific provisions in the dataset for each year, omitting social provisions. (see Provision_Type_over_time_noSoc) -->
 Next, I created a pie graph of the count of each type of provision in the dataset, collapsed across year. As seen in Figure 3, social provisions are by far the most popular provisions.
 
-![Pie provisions](Pie_prov.png)
+![Pie provisions](images/Pie_prov.png)
 
 **Figure 3. Type and relative amount of provisions in the dataset, collapsed across time.**
 
@@ -75,13 +75,13 @@ Next, I explored data on the base country for each non-state actor. I used GeoPa
 
 Using the world dataframe, GeoPandas builds a template that can be applied to a researcher's own data (see Figure 4 for template).
 
-![World](World.png)
+![World](images/World.png)
 
 **Figure 4. World template using GeoPandas built-in "world" dataframe.**
 
 To work with this template, I merged my pandas dataframe with the world dataframe, matching on country name. My dataframe contained the count of the total number of times non-state actors provided services, aggregated across year. See Figure 5 for the resulting heatmap, which represents the prevalence of non-state actors' services over the past 45 years.
 
-![heatmap](Heatmap.png)
+![heatmap](images/Heatmap.png)
 
 **Figure 5. Heatmap displaying the number of unique groups in each country, summed over time. Heat is displayed in quadrants.**
 
@@ -125,25 +125,25 @@ Next, I explored data on the top three U.S. groups see in Table 2:
 
 Figure 6 shows a count of the number of articles in which groups were mentioned over time.
 
-![US article count over time](USgroup_art_count_over_time.png)
+![US article count over time](images/USgroup_art_count_over_time.png)
 
 **Figure 6. A count of the number of articles for three U.S. groups.**
 
 Given that the Ku Klux Klan is the most prevalent group in the U.S. (as a function of article count), I explored their provision rate by type, over time. As seen in Figure 7, social provisions were by far the most prevalent provision.
 
-![Provision_Type_over_time_KKK](KKK_prov_type_over_time.png)
+![Provision_Type_over_time_KKK](images/KKK_prov_type_over_time.png)
 
 **Figure 7. Provisions provided by the Ku Klux Klan by type over time.**
 
 To take a closer look at the prevalence of non-society related provisions for the Ku Klux Klan, I re-plotted Figure 7, this time omitting society provisions.
 
-![Provision_Type_over_time_KKK_noSoc](KKK_prov_type_over_time_no_soc.png)
+![Provision_Type_over_time_KKK_noSoc](images/KKK_prov_type_over_time_no_soc.png)
 
 **Figure 8. Provisions provided by the Ku Klux Klan by type over time, omitting society provisions.**
 
 I noticed a spike in religious provisions for the KKK in the 90s, so I zoomed in on that (see Figure 9).
 
-![KKK in the 90s](KKK_prov_type_over_time_no_soc_90s.png)
+![KKK in the 90s](images/KKK_prov_type_over_time_no_soc_90s.png)
 
 **Figure 9. Provisions provided by the Ku Klux Klan by type during the 1990's, omitting society provisions.**
 
